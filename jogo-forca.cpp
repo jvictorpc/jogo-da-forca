@@ -9,13 +9,28 @@ void abertura(){
     printf("*********************************\n");
 }
 
-void capturaChute(char *chutes,int tentativas){
-     char chute; 
-        printf("Chute uma letra da palavra: ");
-        scanf(" %c", &chute); 
+void capturaChute(char *chutes,int *tentativas){
+    char chute; 
+    printf("Chute uma letra da palavra: ");
+    scanf(" %c", &chute); 
 
-        chutes[tentativas] = chute;
+    chutes[*tentativas] = chute;
+    (*tentativas)++;
 
+}
+
+int jaChutou (char letra, char chutes[26], int tentativas){
+
+    int achou  = 0;
+
+    for(int j = 0; j < tentativas; j++){
+        if (chutes[j] == letra){
+            achou = 1;
+            break;
+        }
+    }
+
+    return achou;
 }
 
 int main (){
@@ -39,14 +54,8 @@ int main (){
 
         for (int i = 0; i < strlen(palavra_secreta); i++) {
 
-            int achou  = 0;
+            int achou = jaChutou(palavra_secreta[i], chutes, tentativas);
 
-            for(int j = 0; j < tentativas; j++){
-                if (chutes[j] == palavra_secreta[i]){
-                    achou = 1;
-                    break;
-                }
-            }
             if (achou){
                 printf("%c ", palavra_secreta[i]);
             }else{
@@ -57,8 +66,8 @@ int main (){
 
         printf("\n");
 
-        capturaChute(chutes, tentativas);
-        tentativas++;
+        capturaChute(chutes, &tentativas);
+        
 
     }while (!acertou && !enforcou);
 
