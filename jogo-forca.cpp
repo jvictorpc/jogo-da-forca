@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define TAM_MAX 26
 
 void abertura(){
     printf("*********************************\n");
@@ -8,14 +9,12 @@ void abertura(){
     printf("*********************************\n");
 }
 
-void capturaChute(int n, char *chutes,){
+void capturaChute(char *chutes,int tentativas){
      char chute; 
         printf("Chute uma letra da palavra: ");
         scanf(" %c", &chute); 
 
         chutes[tentativas] = chute;
-        
-        tentativas++;
 
 }
 
@@ -23,7 +22,7 @@ int main (){
    
     char palavra_secreta[30];
 
-    char chutes[26];
+    char chutes[TAM_MAX];
 
     sprintf(palavra_secreta, "bobo");
 
@@ -58,7 +57,8 @@ int main (){
 
         printf("\n");
 
-        capturaChute(26,chutes);
+        capturaChute(chutes, tentativas);
+        tentativas++;
 
     }while (!acertou && !enforcou);
 
