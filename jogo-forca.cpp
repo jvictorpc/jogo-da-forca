@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <forca.h>
+#include "forca.h"
 
 #define TAM_MAX 26
 
@@ -69,7 +69,7 @@ void escolhePalavra( ){
     fscanf(f, "%d", &qtdPalavras);
 
     srand(time(0));
-    int radnomico = rand() % qtdPalavras;
+    int randomico = rand() % qtdPalavras;
 
     for (int i =0; i <= randomico; i++){
         fscanf(f, "%s", palavra_secreta);
