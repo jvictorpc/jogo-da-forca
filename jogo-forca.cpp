@@ -83,7 +83,7 @@ void adicionaPalavra(){
     printf("Voce deseja adicionar outra palavra ao banco de dados? (s/n)");
     scanf(" %c", &quer);
 
-    if(quer == "s"){
+    if(quer == 's'){
         system("cls");
 
         char nova_palavra[30];
